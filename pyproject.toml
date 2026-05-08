@@ -60,7 +60,7 @@ dev = [
   "pyvirtualdisplay~=3.0 ; sys_platform == 'linux'",
   "setuptools>=78.1.1,<82",
   "packaging>=24.2",
-  "ruff==0.7.3 ; sys_platform == 'linux'",
+  "ruff==0.7.3 ; sys_platform != 'windows'",
 ]
 docs = [
   "sphinx>=7.2.2,<9",
