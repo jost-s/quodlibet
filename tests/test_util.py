@@ -792,6 +792,9 @@ class Tload_library(TestCase):
     def test_glib(self):
         if sys.platform == "darwin":
             fn = "libglib-2.0.0.dylib"
+            bundle_path = os.path.join(sys.prefix, "lib", fn)
+            if not os.path.exists(bundle_path):
+                self.skipTest("GLib not bundled at sys.prefix/lib — bundle-only test")
         else:
             fn = "libglib-2.0.so.0"
         lib, name = util.load_library([fn])

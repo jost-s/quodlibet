@@ -996,7 +996,9 @@ def load_library(names, shared=True):
             dlopen_name = ctypes.util.find_library(name) or name
 
         if is_osx() and not os.path.isabs(dlopen_name):
-            dlopen_name = os.path.join(sys.prefix, "lib", dlopen_name)
+            prefixed = os.path.join(sys.prefix, "lib", dlopen_name)
+            if os.path.exists(prefixed):
+                dlopen_name = prefixed
 
         try:
             return load_func(dlopen_name), name
